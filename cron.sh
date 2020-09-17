@@ -3,19 +3,18 @@
 if [ -z "$CRON" ]
   then
     echo "INFO: No CRON setting found. Running autoremove once."
-    /usr/bin/autoremove-torrents $OPTS
+    /usr/local/bin/autoremove-torrents $OPTS
   else
     # Setup cron schedule
-    crontab -d
-    echo "$CRON /usr/bin/autoremove-torrents $OPTS >> /var/log/autoremove-torrents.log 2>&1" > /tmp/crontab.tmp
+    echo "$CRON /usr/local/bin/autoremove-torrents $OPTS >> /var/log/autoremove-torrents.log 2>&1" > /tmp/crontab.tmp
     crontab /tmp/crontab.tmp
+    crontab -l
     rm /tmp/crontab.tmp
-
     # Start cron
-    echo "INFO: Starting crond ..."
+    echo "INFO: Starting cron ..."
     touch /var/log/crond.log
-    crond -b -l 0 -L /var/log/crond.log
-    echo "INFO: crond started"
+    cron -f &
+    echo "INFO: cron started"
     tail -F /var/log/crond.log /var/log/autoremove-torrents.log
   fi
 fi

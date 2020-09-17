@@ -11,21 +11,11 @@ RUN apt-get update \
 ADD cron.sh /usr/bin/cron.sh
 RUN chmod +x /usr/bin/cron.sh
 
-ADD ./crontab /etc/cron.d/cron-jobs
-RUN chmod 0644 /etc/cron.d/cron-jobs
-
 RUN touch /var/log/autoremove-torrents.log
-
-RUN touch /var/log/cron.log
 
 COPY config.example.yml config.yml
 
-ENV OPTS ''
+ENV OPTS '-c /app/config.yml'
 ENV CRON '*/5 * * * *'
 
 ENTRYPOINT ["/bin/sh", "/usr/bin/cron.sh"]
-
-
-
-
-
