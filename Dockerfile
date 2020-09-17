@@ -5,7 +5,7 @@ WORKDIR /app
 RUN apt-get update \
 && apt-get install gcc cron -y -q \
 && pip3 install autoremove-torrents \
-&& apt-get purge gcc \
+&& apt-get purge gcc -y \
 && apt-get clean
 
 ADD cron.sh /usr/bin/cron.sh
