@@ -21,6 +21,7 @@ RUN touch /var/log/cron.log
 COPY config.example.yml config.yml
 
 ENV OPTS ''
+ENV CRON '*/5 * * * *'
 
 ENTRYPOINT ["/bin/sh", "/usr/bin/cron.sh"]
 
