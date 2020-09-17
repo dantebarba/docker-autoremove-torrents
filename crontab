@@ -1,0 +1,1 @@
+* * * * * root autoremove-torrents $OPTS >> /var/log/cron.log 2>&1
