@@ -1,1 +1,1 @@
-$CRON root autoremove-torrents $OPTS >> /var/log/cron.log 2>&1
+* * * * * root autoremove-torrents >> /var/log/cron.log 2>&1
