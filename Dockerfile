@@ -2,6 +2,10 @@ FROM python:3.8.5-slim
 
 WORKDIR /app
 
+RUN apt-get update \
+&& apt-get install gcc -y \
+&& apt-get clean
+
 RUN pip3 install autoremove-torrents
 
 RUN touch autoremove-torrents.log
