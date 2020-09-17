@@ -1,10 +1,8 @@
-FROM python:3.8.5-alpine
+FROM python:3.8.5-slim
 
 WORKDIR /app
 
-RUN apk add --no-cache --virtual .build-deps gcc musl-dev \
-     && pip3 install autoremove-torrents \
-     && apk del .build-deps gcc musl-dev
+RUN pip3 install autoremove-torrents
 
 RUN touch autoremove-torrents.log
 
