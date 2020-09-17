@@ -1,0 +1,23 @@
+my_task:          # Part 1: Task Name
+  # Part 2: Login Information
+  client: qbittorrent
+  host: http://127.0.0.1:9091
+  username: admin
+  password: adminadmin
+  # Part 3: Strategies Block (Remove Conditions)
+  strategies:
+    strategy1:    # Part I: Strategy Name
+      # Part II: Filters
+      categories:
+        - IPT
+      # Part III: Remove Condition
+      ratio: 1
+      seeding_time: 1209600
+    strategy2:
+      all_categories: true
+      excluded_categories:
+        - IPT
+      seeding_time: 259200
+    # Add more strategies here...
+  # Part 4: Decide whether to remove and delete data (optional)
+  delete_data: true
